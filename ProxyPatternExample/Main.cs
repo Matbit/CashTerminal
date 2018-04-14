@@ -7,6 +7,13 @@ namespace ProxyPatternExample
     public partial class Main : Form
     {
         UserInputSystem inputSystem = new UserInputSystem();
+
+
+        //0 = null
+        //1 = log in
+        public static byte runProcess = 0;
+
+
         public Main()
         {
             InitializeComponent();
@@ -35,6 +42,7 @@ namespace ProxyPatternExample
             inputSystem.setStatus(true);
             tbxProgram.AppendText("please type in your pin code and confirm.." + Environment.NewLine);
             isBlockNb(inputSystem.getStatus());
+            runProcess = 1;
 
 
 
@@ -53,6 +61,7 @@ namespace ProxyPatternExample
             panelStatusCard.BackColor = Color.Black;
         }
 
+        //abled or enabled the numeric keypad
         private void isBlockNb(bool blocked)
         {
             btnNB0.Enabled = blocked;
