@@ -8,16 +8,22 @@ namespace ProxyPatternExample
 {
     class CashTerminalOS
     {
+        private byte processID;
+        public byte ProcessID { get; set; }
+        readonly Main mainGui;
 
-        Main mainGui;
+        ProxyCashTerminal proxy;
 
         public CashTerminalOS(Main mainGui)
         {
             this.mainGui = mainGui;
+            proxy = new ProxyCashTerminal();
+            ProcessID = 0;
         }
 
         public void useProgram(byte processID)
         {
+            ProcessID = 0;
             if(processID == 0)
             {
                 //start
@@ -32,27 +38,43 @@ namespace ProxyPatternExample
             else if(processID == 1) 
             {
                 //login
+                ProcessID = 1;
                 processLogin();
 
             }
             else if(processID == 2)
             {
                 //get money
+                ProcessID = 2;
             }
             else if(processID == 3)
             {
                 //get acc balance
+                ProcessID = 3;
             }
             else if(processID == 4)
             {
                 //print acc history
+                ProcessID = 4;
             }
             else if(processID == 5)
             {
                 //exit
+                ProcessID = 5;
                 processExit();
             }
-            //else error message
+            else if(processID == 6)
+            {
+                //main menu
+                ProcessID = 6;
+
+            }
+            else if(processID == 7)
+            {
+                //check pin
+                checkPinCode();
+
+            }
         }
 
 
@@ -80,12 +102,31 @@ namespace ProxyPatternExample
             mainGui.isAvailableConfirm(true);
             mainGui.isAvailableAbort(true);
             mainGui.useUserInputFielAsPassword(false);
-
-
-
-
+                      
 
         }
+
+        //login - check pin code
+        private void checkPinCode()
+        {
+            String pin = mainGui.getUserInput();
+            int pinCode = Int32.Parse(pin);
+            bool ok = proxy.checkPinCode(pinCode);
+            if (ok)
+            {
+                ProcessID = 6;
+                //run main process
+            }
+            if (!ok)
+            {
+                setBankTitle();
+                mainGui.setView("wrong pin. Please try again..", false);
+                mainGui.setViewUserInput("");
+            }
+
+        }
+
+       
 
         //exit
         private void processExit()

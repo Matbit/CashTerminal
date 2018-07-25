@@ -6,16 +6,13 @@ namespace ProxyPatternExample
 {
     public partial class Main : Form
     {
-             
-
-        ProxyCashTerminal proxy;
+              
         CashTerminalOS ctOS;
 
 
         public Main()
         {
             InitializeComponent();
-            proxy = new ProxyCashTerminal();
             ctOS = new CashTerminalOS(this);
 
             //usertb
@@ -199,6 +196,21 @@ namespace ProxyPatternExample
             }
             
             tbxUserInput.Text = userText;
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            byte processID = ctOS.ProcessID;
+
+            if(processID == 1)
+            {
+                ctOS.useProgram(7);
+            }
+        }
+
+        public String getUserInput()
+        {
+            return tbxUserInput.Text;
         }
     }
 }
