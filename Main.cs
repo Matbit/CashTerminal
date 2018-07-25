@@ -6,16 +6,7 @@ namespace ProxyPatternExample
 {
     public partial class Main : Form
     {
-        
-
-        //0 = null
-        //1 = log in
-        private static byte runProcessId = 0;
-        public static byte RunProcess
-        {
-            get { return runProcessId; }
-            set { runProcessId = value; }
-        }
+             
 
         ProxyCashTerminal proxy;
         CashTerminalOS ctOS;
@@ -24,71 +15,89 @@ namespace ProxyPatternExample
         public Main()
         {
             InitializeComponent();
-            //welcome text
-            tbxProgram.AppendText("Welcome to Berlin Bank. Please insert your bank account card.." + Environment.NewLine);
             proxy = new ProxyCashTerminal();
             ctOS = new CashTerminalOS(this);
+
+            //program start
+            ctOS.useProgram(0);        
+            
+            
             
 
+        }
+
+        //View settings
+        public void setView(String s, bool clearView)
+        {
+            if (clearView)
+            {
+                tbxProgram.Text = "";
+                tbxProgram.AppendText(s + Environment.NewLine);
+            }
+            else if (!clearView)
+            {
+                tbxProgram.AppendText(s + Environment.NewLine);
+            }
+            
         }
 
         //USE Card button 
         private void btnPutCardIn_Click(object sender, EventArgs e)
-        {   
-            //do nothing if card has been inserted
-            if(CardSystem.getCardStatus() == CardSystem.Card.OK)
-            {
-                tbxProgram.AppendText("...card is already in use." + Environment.NewLine);
-                return;
-            }
-
-
-            tbxProgram.AppendText("reading...please wait.." + Environment.NewLine);
-            System.Threading.Thread.Sleep(3250);
-            CardSystem.setCardStatus(true);
-            setStatusGreen();
-            tbxProgram.AppendText("..done" + Environment.NewLine);
+        {
+            ctOS.useProgram(1);
             
-            tbxProgram.AppendText("please type in your pin code and confirm.." + Environment.NewLine);
-            
-            RunProcess = 1;
-
-
-
-
-
         }
 
         //set panel colour green
-        private void setStatusGreen()
+        public void setStatusGreen()
         {
             panelStatusCard.BackColor = Color.Green;
         }
         //set panel colour black
-        private void setStatusBlack()
+        public void setStatusBlack()
         {
             panelStatusCard.BackColor = Color.Black;
         }
 
         //able or enabled the numeric keypad
-        private void isBlockNb(bool blocked)
+        public void isAvailableNB(bool available)
         {
-            btnNB0.Enabled = blocked;
-            btnNB1.Enabled = blocked;
-            btnNB2.Enabled = blocked;
-            btnNB3.Enabled = blocked;
-            btnNB4.Enabled = blocked;
-            btnNB5.Enabled = blocked;
-            btnNB6.Enabled = blocked;
-            btnNB7.Enabled = blocked;
-            btnNB8.Enabled = blocked;
-            btnNB9.Enabled = blocked;
-            btnClear.Enabled = blocked;
+            btnNB0.Enabled = available;
+            btnNB1.Enabled = available;
+            btnNB2.Enabled = available;
+            btnNB3.Enabled = available;
+            btnNB4.Enabled = available;
+            btnNB5.Enabled = available;
+            btnNB6.Enabled = available;
+            btnNB7.Enabled = available;
+            btnNB8.Enabled = available;
+            btnNB9.Enabled = available;
+            btnClear.Enabled = available;
+        }
+
+        //use card btn - control
+        public void isAvailableUseCardBtn(bool available)
+        {
+            btnPutCardIn.Enabled = available;
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("PIN: 3749","Note",MessageBoxButtons.OK);
+        }
+
+
+        //control class for CashTerminalOS
+        public class MainControl
+        {
+
+            //type code here..
+
+
+
+
+
         }
     }
 }

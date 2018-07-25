@@ -20,11 +20,15 @@ namespace ProxyPatternExample
         {
             if(processID == 0)
             {
-                //opening program
+                mainGui.setView("Welcome to Berlin Bank. Please insert your bank account card..", false);
+                    
+                     
             }
-            else if(processID == 1)
+            else if(processID == 1) 
             {
                 //login
+                processLogin();
+
             }
             else if(processID == 2)
             {
@@ -44,6 +48,30 @@ namespace ProxyPatternExample
             }
             //else error message
         }
+
+
+
+
+        //login
+        private void processLogin()
+        {
+            //do nothing if card has been inserted
+            if (CardSystem.getCardStatus() == CardSystem.Card.OK)
+            {
+                mainGui.setView("...card is already in use.", false);
+                return;
+            }
+
+
+            mainGui.setView("reading...please wait..", false);
+            System.Threading.Thread.Sleep(3250);
+            CardSystem.setCardStatus(true);
+            mainGui.setStatusGreen();
+            mainGui.setView("..done", false);
+            mainGui.setView("please type in your pin code and confirm..", false);
+            mainGui.isAvailableUseCardBtn(false);
+        }
+
 
 
 
