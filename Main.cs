@@ -17,7 +17,7 @@ namespace ProxyPatternExample
 
             //usertb
             tbxUserInput.PasswordChar = '*';
-            tbxUserInput.MaxLength = 6;
+            tbxUserInput.MaxLength = 4;
 
             //program start
             ctOS.useProgram(0);
@@ -42,6 +42,11 @@ namespace ProxyPatternExample
         public void setViewUserInput(String s)
         {
             tbxUserInput.Text = s;
+        }
+        //clear view
+        public void clearView()
+        {
+            tbxProgram.Text = "";
         }
 
         //USE Card button 
@@ -164,7 +169,15 @@ namespace ProxyPatternExample
 
         private void btnNB1_Click(object sender, EventArgs e)
         {
-            userInput("1");
+
+            if(ctOS.ProcessID == 6)
+            {
+                useUserInputFielAsPassword(true);
+                userInput("1");
+                ctOS.useProgram(2);
+
+            }
+            else userInput("1");
         }
 
         private void btnNB2_Click(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace ProxyPatternExample
 
         public void useProgram(byte processID)
         {
-            ProcessID = 0;
+            //ProcessID = 0;
             if(processID == 0)
             {
                 //start
@@ -46,6 +46,7 @@ namespace ProxyPatternExample
             {
                 //get money
                 ProcessID = 2;
+                getCash();
             }
             else if(processID == 3)
             {
@@ -67,6 +68,7 @@ namespace ProxyPatternExample
             {
                 //main menu
                 ProcessID = 6;
+                processMain();
 
             }
             else if(processID == 7)
@@ -96,6 +98,8 @@ namespace ProxyPatternExample
             CardSystem.setCardStatus(true);
             mainGui.setStatusGreen();
             mainGui.setView("..done", false);
+            System.Threading.Thread.Sleep(800);
+            setBankTitle();
             mainGui.setView("please type in your pin code and confirm..", false);
             mainGui.isAvailableUseCardBtn(false);
             mainGui.isAvailableNB(true);
@@ -114,10 +118,10 @@ namespace ProxyPatternExample
             bool ok = proxy.checkPinCode(pinCode);
             if (ok)
             {
-                ProcessID = 6;
                 //run main process
+                useProgram(6);
             }
-            if (!ok)
+            else if (!ok)
             {
                 setBankTitle();
                 mainGui.setView("wrong pin. Please try again..", false);
@@ -126,23 +130,52 @@ namespace ProxyPatternExample
 
         }
 
+        //get cash
+        private void getCash()
+        {
+            setBankTitle();
+            mainGui.setView("Please choose an amount you want to get in cash..", false);
+            mainGui.setViewUserInput("");
+
+
+        }
+
        
 
         //exit
         private void processExit()
         {
-            mainGui.setViewUserInput("");
+            mainGui.clearView();
             setBankTitle();
+            mainGui.setViewUserInput("");
             mainGui.setView("please wait a moment. you get your card back soon..", false);
             System.Threading.Thread.Sleep(3250);
             CardSystem.setCardStatus(false);
             mainGui.setStatusBlack();
+            System.Threading.Thread.Sleep(100);
+            setBankTitle();
             mainGui.setView("Thank you and we wish you a very nice day..".ToUpper(), false);
             System.Threading.Thread.Sleep(5000);
             mainGui.isAvailableNB(false);
             mainGui.isAvailableUseCardBtn(true);
             useProgram(0);
             
+
+        }
+
+        //main
+        private void processMain()
+        {
+            mainGui.setViewUserInput("");
+            setBankTitle();
+            mainGui.setView("login successful..", false);
+            System.Threading.Thread.Sleep(2500);
+            setMainMenu();
+            mainGui.isAvailableAbort(true);
+            mainGui.isAvailableConfirm(false);
+            mainGui.isAvailableNB(true);
+            mainGui.isAvailableUseCardBtn(false);
+
 
         }
 
@@ -155,7 +188,18 @@ namespace ProxyPatternExample
 
         private void setBlank()
         {
-            mainGui.setView("", false);
+            mainGui.setView(" ", false);
+        }
+
+        private void setMainMenu()
+        {
+            setBankTitle();
+            mainGui.setView("Choose any options:", false);
+            mainGui.setView("- get cash out - Press <1>", false);
+            mainGui.setView("- show account balance - Press <2> ", false);
+            mainGui.setView("- print account history - Press <3> ", false);
+            mainGui.setView("- exit - Press <4>", false);
+
         }
 
 
