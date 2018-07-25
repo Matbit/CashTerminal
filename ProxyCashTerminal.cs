@@ -23,33 +23,40 @@ namespace ProxyPatternExample
 
         public bool checkOrder(double money)
         {
-            throw new NotImplementedException();
+            initProxy();
+           return bankBerlin.checkOrder(money);
         }
 
         public bool checkPinCode(int code)
         {
-            if(bankBerlin == null)
-            {
-                bankBerlin = new BankBerlin();
-            }
-
+            initProxy();
             return bankBerlin.checkPinCode(code);
         }
 
        
         public string getAccountBalance()
         {
-            throw new NotImplementedException();
+            initProxy();
+            return bankBerlin.getAccountBalance();
         }
 
         public bool getMoney(double money)
         {
-            throw new NotImplementedException();
+            initProxy();
+            return bankBerlin.getMoney(money);
         }
 
         public List<string> getAccOrders()
         {
             throw new NotImplementedException();
+        }
+
+        private void initProxy()
+        {
+            if(bankBerlin == null)
+            {
+                bankBerlin = new BankBerlin();
+            }
         }
 
 

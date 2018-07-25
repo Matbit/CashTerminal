@@ -17,12 +17,17 @@ namespace ProxyPatternExample
             set { runProcessId = value; }
         }
 
+        ProxyCashTerminal proxy;
+        CashTerminalOS ctOS;
+
 
         public Main()
         {
             InitializeComponent();
             //welcome text
             tbxProgram.AppendText("Welcome to Berlin Bank. Please insert your bank account card.." + Environment.NewLine);
+            proxy = new ProxyCashTerminal();
+            ctOS = new CashTerminalOS(this);
             
 
         }
@@ -65,7 +70,7 @@ namespace ProxyPatternExample
             panelStatusCard.BackColor = Color.Black;
         }
 
-        //abled or enabled the numeric keypad
+        //able or enabled the numeric keypad
         private void isBlockNb(bool blocked)
         {
             btnNB0.Enabled = blocked;

@@ -88,9 +88,5 @@ namespace ProxyPatternExample
             return euroValue;
         }
 
-        string IBankAPI.checkOrder(double money)
-        {
-            throw new NotImplementedException();
-        }
-    }
+     }
 }

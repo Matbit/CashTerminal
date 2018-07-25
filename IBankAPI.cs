@@ -15,7 +15,7 @@ namespace ProxyPatternExample
         bool getMoney(double money);
 
         //check if order is ok
-        String checkOrder(double money);
+        bool checkOrder(double money);
 
         //get account balance
         String getAccountBalance();
