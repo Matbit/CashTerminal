@@ -18,6 +18,10 @@ namespace ProxyPatternExample
             proxy = new ProxyCashTerminal();
             ctOS = new CashTerminalOS(this);
 
+            //usertb
+            tbxUserInput.PasswordChar = '*';
+            tbxUserInput.MaxLength = 6;
+
             //program start
             ctOS.useProgram(0);
 
@@ -36,6 +40,11 @@ namespace ProxyPatternExample
                 tbxProgram.AppendText(s + Environment.NewLine);
             }
             
+        }
+        //View userInput
+        public void setViewUserInput(String s)
+        {
+            tbxUserInput.Text = s;
         }
 
         //USE Card button 
@@ -78,6 +87,15 @@ namespace ProxyPatternExample
             btnPutCardIn.Enabled = available;
             
         }
+        public void isAvailableConfirm(bool available)
+        {
+            btnConfirm.Enabled = available;
+        }
+
+        public void isAvailableAbort(bool available)
+        {
+            btnAbort.Enabled = available;
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -93,14 +111,14 @@ namespace ProxyPatternExample
         
 
         
-        private void userInput(char c, bool isPassword)
-        {
-            if (isPassword)
+        private void userInput(string s)
+        {   
+            if(tbxUserInput.TextLength >= 4)
             {
-                tbxUserInput.AppendText("*");
-
-
+                return;
             }
+            tbxUserInput.AppendText(s);
+            
         }
 
 
@@ -109,12 +127,78 @@ namespace ProxyPatternExample
             ctOS.useProgram(5);
         }
 
-        public void useUserInputFielAsPassword(char c)
+        public void useUserInputFielAsPassword(bool isPassword)
         {
-            String s = c.ToString();
-            tbxUserInput.AppendText();
+
+            tbxUserInput.UseSystemPasswordChar = isPassword;
+
+            
         }
 
+        private void btnNB7_Click(object sender, EventArgs e)
+        {
+            userInput("7");
+        }
 
+        private void btnNB8_Click(object sender, EventArgs e)
+        {
+            userInput("8");
+        }
+
+        private void btnNB9_Click(object sender, EventArgs e)
+        {
+            userInput("9");
+        }
+
+        private void btnNB4_Click(object sender, EventArgs e)
+        {
+            userInput("4");
+        }
+
+        private void btnNB5_Click(object sender, EventArgs e)
+        {
+            userInput("5");
+        }
+
+        private void btnNB6_Click(object sender, EventArgs e)
+        {
+            userInput("6");
+        }
+
+        private void btnNB1_Click(object sender, EventArgs e)
+        {
+            userInput("1");
+        }
+
+        private void btnNB2_Click(object sender, EventArgs e)
+        {
+            userInput("2");
+        }
+
+        private void btnNB3_Click(object sender, EventArgs e)
+        {
+            userInput("3");
+        }
+
+        private void btnNB0_Click(object sender, EventArgs e)
+        {
+            userInput("0");
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            String userText = tbxUserInput.Text;
+            int length = userText.Length;
+            try
+            {
+                userText = userText.Remove((length - 1));
+            }
+            catch
+            {
+                //
+            }
+            
+            tbxUserInput.Text = userText;
+        }
     }
 }

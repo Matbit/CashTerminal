@@ -71,6 +71,7 @@
             this.btnNB1.TabIndex = 1;
             this.btnNB1.Text = "1";
             this.btnNB1.UseVisualStyleBackColor = true;
+            this.btnNB1.Click += new System.EventHandler(this.btnNB1_Click);
             // 
             // btnNB2
             // 
@@ -81,6 +82,7 @@
             this.btnNB2.TabIndex = 2;
             this.btnNB2.Text = "2";
             this.btnNB2.UseVisualStyleBackColor = true;
+            this.btnNB2.Click += new System.EventHandler(this.btnNB2_Click);
             // 
             // btnNB3
             // 
@@ -91,6 +93,7 @@
             this.btnNB3.TabIndex = 3;
             this.btnNB3.Text = "3";
             this.btnNB3.UseVisualStyleBackColor = true;
+            this.btnNB3.Click += new System.EventHandler(this.btnNB3_Click);
             // 
             // btnNB4
             // 
@@ -101,6 +104,7 @@
             this.btnNB4.TabIndex = 4;
             this.btnNB4.Text = "4";
             this.btnNB4.UseVisualStyleBackColor = true;
+            this.btnNB4.Click += new System.EventHandler(this.btnNB4_Click);
             // 
             // btnNB5
             // 
@@ -111,6 +115,7 @@
             this.btnNB5.TabIndex = 5;
             this.btnNB5.Text = "5";
             this.btnNB5.UseVisualStyleBackColor = true;
+            this.btnNB5.Click += new System.EventHandler(this.btnNB5_Click);
             // 
             // btnNB6
             // 
@@ -121,6 +126,7 @@
             this.btnNB6.TabIndex = 6;
             this.btnNB6.Text = "6";
             this.btnNB6.UseVisualStyleBackColor = true;
+            this.btnNB6.Click += new System.EventHandler(this.btnNB6_Click);
             // 
             // btnNB7
             // 
@@ -131,6 +137,7 @@
             this.btnNB7.TabIndex = 7;
             this.btnNB7.Text = "7";
             this.btnNB7.UseVisualStyleBackColor = true;
+            this.btnNB7.Click += new System.EventHandler(this.btnNB7_Click);
             // 
             // btnNB8
             // 
@@ -141,6 +148,7 @@
             this.btnNB8.TabIndex = 8;
             this.btnNB8.Text = "8";
             this.btnNB8.UseVisualStyleBackColor = true;
+            this.btnNB8.Click += new System.EventHandler(this.btnNB8_Click);
             // 
             // btnNB9
             // 
@@ -151,6 +159,7 @@
             this.btnNB9.TabIndex = 9;
             this.btnNB9.Text = "9";
             this.btnNB9.UseVisualStyleBackColor = true;
+            this.btnNB9.Click += new System.EventHandler(this.btnNB9_Click);
             // 
             // btnNB0
             // 
@@ -161,6 +170,7 @@
             this.btnNB0.TabIndex = 10;
             this.btnNB0.Text = "0";
             this.btnNB0.UseVisualStyleBackColor = true;
+            this.btnNB0.Click += new System.EventHandler(this.btnNB0_Click);
             // 
             // btnClear
             // 
@@ -171,6 +181,7 @@
             this.btnClear.TabIndex = 11;
             this.btnClear.Text = "<-";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnAbort
             // 
@@ -209,12 +220,16 @@
             // 
             this.tbxUserInput.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.tbxUserInput.Enabled = false;
-            this.tbxUserInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxUserInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxUserInput.Location = new System.Drawing.Point(3, 194);
+            this.tbxUserInput.MaxLength = 6;
             this.tbxUserInput.Multiline = true;
             this.tbxUserInput.Name = "tbxUserInput";
+            this.tbxUserInput.PasswordChar = '*';
             this.tbxUserInput.Size = new System.Drawing.Size(296, 31);
             this.tbxUserInput.TabIndex = 0;
+            this.tbxUserInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbxUserInput.UseSystemPasswordChar = true;
             // 
             // btnConfirm
             // 

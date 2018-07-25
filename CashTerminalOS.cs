@@ -20,6 +20,10 @@ namespace ProxyPatternExample
         {
             if(processID == 0)
             {
+                //start
+                mainGui.isAvailableNB(false);
+                mainGui.isAvailableAbort(false);
+                mainGui.isAvailableConfirm(false);
                 setBankTitle();
                 mainGui.setView("Please insert your bank account card..", false);
                     
@@ -72,11 +76,21 @@ namespace ProxyPatternExample
             mainGui.setView("..done", false);
             mainGui.setView("please type in your pin code and confirm..", false);
             mainGui.isAvailableUseCardBtn(false);
+            mainGui.isAvailableNB(true);
+            mainGui.isAvailableConfirm(true);
+            mainGui.isAvailableAbort(true);
+            mainGui.useUserInputFielAsPassword(false);
+
+
+
+
+
         }
 
         //exit
         private void processExit()
         {
+            mainGui.setViewUserInput("");
             setBankTitle();
             mainGui.setView("please wait a moment. you get your card back soon..", false);
             System.Threading.Thread.Sleep(3250);
