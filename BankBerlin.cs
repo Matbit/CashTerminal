@@ -9,7 +9,7 @@ namespace ProxyPatternExample
     class BankBerlin : IBankAPI
     {
 
-        private double bankAccValue;
+        private double bankAccValue = 3590;
         public double BankAccValue { get; set; }
 
         private  List<int> pinCodeList = new List<int>();
@@ -19,8 +19,8 @@ namespace ProxyPatternExample
         public BankBerlin()
         {
             pinCodeList.Add(3749);
-
-            for (int i = 0; i <= 25; i++)
+            
+            for (int i = 0; i <= 2; i++)
             {
                 pinCodeList.Add(getRandomPin());
             }
@@ -56,6 +56,10 @@ namespace ProxyPatternExample
         public bool checkOrder(double money)
         {
             if (money > bankAccValue)
+            {
+                return false;
+            }
+            else if(money > 1500)
             {
                 return false;
             }

@@ -77,6 +77,13 @@ namespace ProxyPatternExample
                 checkPinCode();
 
             }
+            else if(processID == 8)
+            {
+                //check user value
+                ProcessID = 8;
+                checkGetCashUser();
+            }
+
         }
 
 
@@ -94,7 +101,7 @@ namespace ProxyPatternExample
 
 
             mainGui.setView("reading...please wait..", false);
-            System.Threading.Thread.Sleep(3250);
+            System.Threading.Thread.Sleep(1250);
             CardSystem.setCardStatus(true);
             mainGui.setStatusGreen();
             mainGui.setView("..done", false);
@@ -134,10 +141,32 @@ namespace ProxyPatternExample
         private void getCash()
         {
             setBankTitle();
-            mainGui.setView("Please choose an amount you want to get in cash..", false);
+            mainGui.setView("Please choose an amount for your account operation..", false);
             mainGui.setViewUserInput("");
+            mainGui.isAvailableConfirm(true);
+                     
+            
+        }
 
+        //get cash - check user value
+        private void checkGetCashUser()
+        {
+            //validate user input
+            String cashWanted = mainGui.getUserInput();
+            Double cash = Double.Parse(cashWanted);
 
+            bool isOrderOk = proxy.checkOrder(cash);
+            if (isOrderOk)
+            {
+                proxy.getMoney(cash);
+            }
+            else
+            {
+                setBankTitle();
+                mainGui.setView("You have not enough money, or the value is above 1500€", false);
+                System.Threading.Thread.Sleep(2000);
+                useProgram(6);
+            }
         }
 
        
@@ -168,8 +197,7 @@ namespace ProxyPatternExample
         {
             mainGui.setViewUserInput("");
             setBankTitle();
-            mainGui.setView("login successful..", false);
-            System.Threading.Thread.Sleep(2500);
+            System.Threading.Thread.Sleep(500);
             setMainMenu();
             mainGui.isAvailableAbort(true);
             mainGui.isAvailableConfirm(false);
@@ -202,8 +230,6 @@ namespace ProxyPatternExample
 
         }
 
-
-
-
+        
     }
 }

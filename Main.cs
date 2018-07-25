@@ -219,6 +219,14 @@ namespace ProxyPatternExample
             {
                 ctOS.useProgram(7);
             }
+            else if(processID == 2)
+            {
+                ctOS.useProgram(8);
+            }
+            else if(processID == 8)
+            {
+                ctOS.useProgram(5);
+            }
         }
 
         public String getUserInput()
