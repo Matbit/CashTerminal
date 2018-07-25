@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankBerlin.cs" />
-    <Compile Include="BankSafe.cs" />
     <Compile Include="CardSystem.cs" />
     <Compile Include="IBankAPI.cs" />
     <Compile Include="Main.cs">

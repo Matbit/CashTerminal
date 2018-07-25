@@ -8,8 +8,14 @@ namespace ProxyPatternExample
 {
     class BankBerlin : IBankAPI
     {
+
+        private double bankAccValue;
+        public double BankAccValue { get; set; }
+
         private  List<int> pinCodeList = new List<int>();
 
+
+        //constructor
         public BankBerlin()
         {
             pinCodeList.Add(3749);
@@ -21,6 +27,7 @@ namespace ProxyPatternExample
             
         }
 
+        //login
         public bool checkPinCode(int code)
         {
             try
@@ -34,6 +41,38 @@ namespace ProxyPatternExample
         }
 
        
+        //get money 
+        public bool getMoney(double money)
+        {
+            if (checkOrder(money))
+            {
+                bankAccValue -= money;
+                return true;
+            }
+            else return false;
+        }
+
+        //check acc balance
+        public bool checkOrder(double money)
+        {
+            if (money > bankAccValue)
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        //get acc balance (formated in euro)
+        public string getAccountBalance()
+        {
+            return formatInEuro(bankAccValue);
+        }
+
+        public List<string> getAccOrders()
+        {
+            throw new NotImplementedException();
+        }
+
 
         private static int getRandomPin()
         {
@@ -41,22 +80,15 @@ namespace ProxyPatternExample
             return r.Next(1000, 9999);
         }
 
-        public bool getMoney(double money)
+
+        private static string formatInEuro(double d)
         {
-            return true;
+            string euroValue = d.ToString();
+            euroValue = string.Format("{0:0.00} €", d);
+            return euroValue;
         }
 
-        public String checkOrder(double money)
-        {
-            
-        }
-
-        public string getAccountBalance()
-        {
-           return BankSafe.getAccountBalance();
-        }
-
-        public List<string> getAccOrders()
+        string IBankAPI.checkOrder(double money)
         {
             throw new NotImplementedException();
         }

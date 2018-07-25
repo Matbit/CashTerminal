@@ -8,7 +8,18 @@ namespace ProxyPatternExample
 {
     class ProxyCashTerminal : IBankAPI
     {
-        BankBerlin secure;
+        BankBerlin bankBerlin;
+
+
+        //constructor
+        public ProxyCashTerminal()
+        {
+            
+        }
+
+
+
+
 
         public bool checkOrder(double money)
         {
@@ -17,19 +28,15 @@ namespace ProxyPatternExample
 
         public bool checkPinCode(int code)
         {
-            if(secure == null)
+            if(bankBerlin == null)
             {
-                secure = new BankBerlin();
+                bankBerlin = new BankBerlin();
             }
 
-            return secure.checkPinCode(code);
+            return bankBerlin.checkPinCode(code);
         }
 
-        public List<string> getAccOrders()
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public string getAccountBalance()
         {
             throw new NotImplementedException();
@@ -40,18 +47,12 @@ namespace ProxyPatternExample
             throw new NotImplementedException();
         }
 
-        public bool logIn(int code)
+        public List<string> getAccOrders()
         {
-            bool ok = checkPinCode(code);
-            if (!ok)
-            {
-                throw new Exception("UnknownKey");
-                
-            }
-            else return true;
-            
-
+            throw new NotImplementedException();
         }
+
+
 
 
 

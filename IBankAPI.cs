@@ -20,7 +20,7 @@ namespace ProxyPatternExample
         //get account balance
         String getAccountBalance();
 
-        //get last account orders
+        //get account history
         List<String> getAccOrders();
 
 
