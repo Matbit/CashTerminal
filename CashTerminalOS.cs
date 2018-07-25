@@ -20,7 +20,8 @@ namespace ProxyPatternExample
         {
             if(processID == 0)
             {
-                mainGui.setView("Welcome to Berlin Bank. Please insert your bank account card..", false);
+                setBankTitle();
+                mainGui.setView("Please insert your bank account card..", false);
                     
                      
             }
@@ -45,6 +46,7 @@ namespace ProxyPatternExample
             else if(processID == 5)
             {
                 //exit
+                processExit();
             }
             //else error message
         }
@@ -70,6 +72,35 @@ namespace ProxyPatternExample
             mainGui.setView("..done", false);
             mainGui.setView("please type in your pin code and confirm..", false);
             mainGui.isAvailableUseCardBtn(false);
+        }
+
+        //exit
+        private void processExit()
+        {
+            setBankTitle();
+            mainGui.setView("please wait a moment. you get your card back soon..", false);
+            System.Threading.Thread.Sleep(3250);
+            CardSystem.setCardStatus(false);
+            mainGui.setStatusBlack();
+            mainGui.setView("Thank you and we wish you a very nice day..".ToUpper(), false);
+            System.Threading.Thread.Sleep(5000);
+            mainGui.isAvailableNB(false);
+            mainGui.isAvailableUseCardBtn(true);
+            useProgram(0);
+            
+
+        }
+
+        //helping methods
+        private void setBankTitle()
+        {
+            mainGui.setView("$BERLIN BANK - your partner around the world$", true);
+            setBlank();
+        }
+
+        private void setBlank()
+        {
+            mainGui.setView("", false);
         }
 
 

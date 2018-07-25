@@ -181,6 +181,7 @@
             this.btnAbort.TabIndex = 12;
             this.btnAbort.Text = "Abort";
             this.btnAbort.UseVisualStyleBackColor = true;
+            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
             // 
             // panel2
             // 
@@ -194,7 +195,7 @@
             // 
             // tbxProgram
             // 
-            this.tbxProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.tbxProgram.BackColor = System.Drawing.Color.Lavender;
             this.tbxProgram.Enabled = false;
             this.tbxProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxProgram.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));

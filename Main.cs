@@ -19,10 +19,7 @@ namespace ProxyPatternExample
             ctOS = new CashTerminalOS(this);
 
             //program start
-            ctOS.useProgram(0);        
-            
-            
-            
+            ctOS.useProgram(0);
 
         }
 
@@ -31,7 +28,7 @@ namespace ProxyPatternExample
         {
             if (clearView)
             {
-                tbxProgram.Text = "";
+                tbxProgram.Clear();
                 tbxProgram.AppendText(s + Environment.NewLine);
             }
             else if (!clearView)
@@ -88,16 +85,36 @@ namespace ProxyPatternExample
         }
 
 
-        //control class for CashTerminalOS
-        public class MainControl
+        
+        private void btnAbort_Click(object sender, EventArgs e)
         {
-
-            //type code here..
-
-
-
-
-
+           abortProgram();
         }
+        
+
+        
+        private void userInput(char c, bool isPassword)
+        {
+            if (isPassword)
+            {
+                tbxUserInput.AppendText("*");
+
+
+            }
+        }
+
+
+        public void abortProgram()
+        {
+            ctOS.useProgram(5);
+        }
+
+        public void useUserInputFielAsPassword(char c)
+        {
+            String s = c.ToString();
+            tbxUserInput.AppendText();
+        }
+
+
     }
 }
