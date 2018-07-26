@@ -52,10 +52,15 @@ namespace ProxyPatternExample
             {
                 DateTime today = DateTime.Now;
                 int day = today.Day;
+                string dayS = string.Format("{0:00}", day);
                 int month = today.Month;
+                string monthS = string.Format("{0:00}", month);
+
+
                 int year = today.Year;
-                String output = day.ToString() + "-" + month.ToString() + "-" + year.ToString();
+                String output = dayS + "." + monthS + "." + year.ToString();
                 bankAccValue -= money;
+                money = money * (-1);
                 accHistory.Add(new Transaction(output, money,"CT-HH, get hardcash"));
                 return true;
             }

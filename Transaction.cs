@@ -34,7 +34,15 @@ namespace ProxyPatternExample
 
         public String printTr()
         {
-            return date + "--" + amount + "€-- " + referenceLine;
+            String dValue = null;
+
+            if (amount > 0)
+            {
+                dValue = "+" + amount;
+            }
+            else dValue = amount.ToString();
+
+            return date + " || "+ referenceLine +"  || "+ dValue + "€";
         }
     }
 }

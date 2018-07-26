@@ -161,7 +161,7 @@ namespace ProxyPatternExample
             if (isOrderOk)
             {
                 proxy.getMoney(cash);
-                mainGui.setView("Transaction was successful/("+formatInEuro(cash)+"/)..", false);
+                mainGui.setView("Transaction was successful("+formatInEuro(cash)+")..", false);
                 System.Threading.Thread.Sleep(1500);
                 useProgram(6);
             }
