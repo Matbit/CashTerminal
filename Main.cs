@@ -126,6 +126,14 @@ namespace ProxyPatternExample
             {
                 ctOS.useProgram(6);
             }
+            else if(ctOS.ProcessID == 12)
+            {
+                ctOS.useProgram(2);
+            }
+            else if(ctOS.ProcessID == 13)
+            {
+                ctOS.useProgram(6);
+            }
 
             else ctOS.useProgram(5);//log out
         }
@@ -276,6 +284,14 @@ namespace ProxyPatternExample
             else if(ctOS.ProcessID == 6)
             {
                 ctOS.useProgram(11);
+            }
+            else if(ctOS.ProcessID == 2)
+            {
+                ctOS.useProgram(12);
+            }
+            else if(ctOS.ProcessID == 3 || ctOS.ProcessID == 4)
+            {
+                ctOS.useProgram(13);
             }
         }
 

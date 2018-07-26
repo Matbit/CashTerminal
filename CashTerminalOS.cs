@@ -100,6 +100,16 @@ namespace ProxyPatternExample
                 ProcessID = 11;
                 helpMainMenu();
             }
+            else if(processID == 12)
+            {
+                ProcessID = 12;
+                helpDuringGetCash();
+            }
+            else if(processID == 13)
+            {
+                ProcessID = 13;
+                helpDuringMenu2And3();
+            }
 
         }
 
@@ -268,6 +278,18 @@ namespace ProxyPatternExample
         {
             mainGui.setView("", true);
             mainGui.setView("You can choose between four options. Press a number on the keypad", false);
+        }
+
+        private void helpDuringGetCash()
+        {
+            mainGui.setView("", true);
+            mainGui.setView("Type in the amount you want to like to get in hardcash.", false);
+        }
+
+        private void helpDuringMenu2And3()
+        {
+            mainGui.setView("", true);
+            mainGui.setView("You can exit if you press <Abort>", false);
         }
 
         //helping methods
