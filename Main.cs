@@ -110,7 +110,7 @@ namespace ProxyPatternExample
         public void abortProgram()
         {
 
-            if (ctOS.ProcessID == 2 || ctOS.ProcessID == 3)
+            if (ctOS.ProcessID == 2 || ctOS.ProcessID == 3 || ctOS.ProcessID == 4)
             {
                 ctOS.useProgram(6);
             }
@@ -190,7 +190,7 @@ namespace ProxyPatternExample
             if(ctOS.ProcessID == 6)
             {
                 useUserInputFielAsPassword(true);
-                userInput("2");
+                //userInput("2");
                 ctOS.useProgram(3);
             }
             else userInput("2");
@@ -198,7 +198,12 @@ namespace ProxyPatternExample
 
         private void btnNB3_Click(object sender, EventArgs e)
         {
-            userInput("3");
+
+            if(ctOS.ProcessID == 6)
+            {
+                ctOS.useProgram(4);
+            }
+            else userInput("3");
         }
 
         private void btnNB0_Click(object sender, EventArgs e)

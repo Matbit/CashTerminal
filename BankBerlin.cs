@@ -25,6 +25,7 @@ namespace ProxyPatternExample
             {
                 pinCodeList.Add(getRandomPin());
             }
+            setHistoryList();
             
         }
 
@@ -84,7 +85,7 @@ namespace ProxyPatternExample
         //get acc history
         public List<Transaction> getAccHistory()
         {
-            throw new NotImplementedException();
+            return accHistory;
         }
         
         //helping methods

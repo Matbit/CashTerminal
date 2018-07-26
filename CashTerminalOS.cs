@@ -58,6 +58,7 @@ namespace ProxyPatternExample
             {
                 //print acc history
                 ProcessID = 4;
+                printAccHistory();
             }
             else if(processID == 5)
             {
@@ -160,8 +161,8 @@ namespace ProxyPatternExample
             if (isOrderOk)
             {
                 proxy.getMoney(cash);
-                mainGui.setView("Transaction was successful..", false);
-                System.Threading.Thread.Sleep(500);
+                mainGui.setView("Transaction was successful/("+formatInEuro(cash)+"/)..", false);
+                System.Threading.Thread.Sleep(1500);
                 useProgram(6);
             }
             else
@@ -179,6 +180,20 @@ namespace ProxyPatternExample
             mainGui.isAvailableConfirm(false);
             setBankTitle();
             mainGui.setView(proxy.getAccountBalance(), false);
+        }
+
+        //show acc history
+        private void printAccHistory()
+        {
+            List<Transaction> myList = new List<Transaction>();
+            myList = proxy.getAccHistory();
+            setBankTitle();
+            mainGui.setView("Last transactions..", false);
+            foreach(Transaction tr in myList)
+            {
+
+                mainGui.setView(tr.printTr(), false);
+            }
         }
 
        
@@ -242,6 +257,13 @@ namespace ProxyPatternExample
 
         }
 
-        
+        private static string formatInEuro(double d)
+        {
+            string euroValue = d.ToString();
+            euroValue = string.Format("{0:0.00} €", d);
+            return euroValue;
+        }
+
+
     }
 }

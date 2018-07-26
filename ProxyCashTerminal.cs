@@ -35,7 +35,8 @@ namespace ProxyPatternExample
 
         public List<Transaction> getAccHistory()
         {
-            throw new NotImplementedException();
+            initProxy();
+            return bankBerlin.getAccHistory();
         }
 
         public string getAccountBalance()

@@ -31,5 +31,10 @@ namespace ProxyPatternExample
         {
             return referenceLine;
         }
+
+        public String printTr()
+        {
+            return date + "--" + amount + "€-- " + referenceLine;
+        }
     }
 }
