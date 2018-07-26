@@ -125,8 +125,13 @@ namespace ProxyPatternExample
 
 
         public void abortProgram()
-        {
-            ctOS.useProgram(5);
+        {   
+
+            if(ctOS.ProcessID == 2)
+            {
+                ctOS.useProgram(6);
+            }
+            else ctOS.useProgram(5);
         }
 
         public void useUserInputFielAsPassword(bool isPassword)
@@ -154,7 +159,17 @@ namespace ProxyPatternExample
 
         private void btnNB4_Click(object sender, EventArgs e)
         {
-            userInput("4");
+
+            if(ctOS.ProcessID == 6)
+            {
+                ctOS.useProgram(5);
+            }
+            else
+            {
+                userInput("4");
+            }
+
+            
         }
 
         private void btnNB5_Click(object sender, EventArgs e)
