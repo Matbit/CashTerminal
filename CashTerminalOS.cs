@@ -85,6 +85,21 @@ namespace ProxyPatternExample
                 ProcessID = 8;
                 checkGetCashUser();
             }
+            else if(processID == 9)
+            {
+                ProcessID = 9;
+                helpLogin();
+            }
+            else if(processID == 10)
+            {
+                ProcessID = 10;
+                helpDuringLogin();
+            }
+            else if(processID == 11)
+            {
+                ProcessID = 11;
+                helpMainMenu();
+            }
 
         }
 
@@ -95,11 +110,11 @@ namespace ProxyPatternExample
         private void processLogin()
         {
             //do nothing if card has been inserted
-            if (CardSystem.getCardStatus() == CardSystem.Card.OK)
-            {
-                mainGui.setView("...card is already in use.", false);
-                return;
-            }
+           // if (CardSystem.getCardStatus() == CardSystem.Card.OK)
+            //{
+              //  mainGui.setView("...card is already in use.", false);
+                //return;
+            //}
 
 
             mainGui.setView("reading...please wait..", false);
@@ -234,9 +249,31 @@ namespace ProxyPatternExample
 
         }
 
+        //helping sites
+        private void helpLogin()
+        {
+            mainGui.isAvailableAbort(true);
+            mainGui.setView("", true);
+            mainGui.setView("Put your card into the apparatus and press <USE Card> button ", false);
+        }
+
+        private void helpDuringLogin()
+        {
+            mainGui.isAvailableAbort(true);
+            mainGui.setView("", true);
+            mainGui.setView("Please type in your pin code. For example <1234>.", false);
+        }
+
+        private void helpMainMenu()
+        {
+            mainGui.setView("", true);
+            mainGui.setView("You can choose between four options. Press a number on the keypad", false);
+        }
+
         //helping methods
         private void setBankTitle()
         {
+            
             mainGui.setView("$BERLIN BANK - your partner around the world$", true);
             setBlank();
         }

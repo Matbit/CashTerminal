@@ -114,7 +114,20 @@ namespace ProxyPatternExample
             {
                 ctOS.useProgram(6);
             }
-            else ctOS.useProgram(5);
+            else if(ctOS.ProcessID == 9) 
+            {
+                ctOS.useProgram(0);
+            }    
+            else if(ctOS.ProcessID == 10)
+            {
+                ctOS.useProgram(1);
+            }
+            else if(ctOS.ProcessID == 11)
+            {
+                ctOS.useProgram(6);
+            }
+
+            else ctOS.useProgram(5);//log out
         }
 
         private void userInput(string s)
@@ -249,5 +262,28 @@ namespace ProxyPatternExample
         {
             return tbxUserInput.Text;
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            if(ctOS.ProcessID == 0)
+            {
+                ctOS.useProgram(9);
+            }
+            else if(ctOS.ProcessID == 1)
+            {
+                ctOS.useProgram(10);
+            }
+            else if(ctOS.ProcessID == 6)
+            {
+                ctOS.useProgram(11);
+            }
+        }
+
+        //private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+        //  string link = "https://en.wikipedia.org/wiki/Proxy_pattern";
+        //linklabelMore.LinkVisited = true;
+        //System.Diagnostics.Process.Start(link);
+        //}
     }
 }
