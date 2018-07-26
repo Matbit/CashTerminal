@@ -21,7 +21,7 @@ namespace ProxyPatternExample
         String getAccountBalance();
 
         //get account history
-        List<String> getAccOrders();
+        List<Transaction> getAccHistory();
 
 
        

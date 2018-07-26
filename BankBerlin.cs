@@ -12,6 +12,7 @@ namespace ProxyPatternExample
         private double bankAccValue = 3590;
         public double BankAccValue { get; set; }
 
+        private List<Transaction> accHistory = new List<Transaction>();
         private  List<int> pinCodeList = new List<int>();
 
 
@@ -26,6 +27,8 @@ namespace ProxyPatternExample
             }
             
         }
+
+        
 
         //login
         public bool checkPinCode(int code)
@@ -46,7 +49,13 @@ namespace ProxyPatternExample
         {
             if (checkOrder(money))
             {
+                DateTime today = DateTime.Now;
+                int day = today.Day;
+                int month = today.Month;
+                int year = today.Year;
+                String output = day.ToString() + "-" + month.ToString() + "-" + year.ToString();
                 bankAccValue -= money;
+                accHistory.Add(new Transaction(output, money,"CT-HH, get hardcash"));
                 return true;
             }
             else return false;
@@ -72,12 +81,13 @@ namespace ProxyPatternExample
             return formatInEuro(bankAccValue);
         }
 
-        public List<string> getAccOrders()
+        //get acc history
+        public List<Transaction> getAccHistory()
         {
             throw new NotImplementedException();
         }
-
-
+        
+        //helping methods
         private static int getRandomPin()
         {
             Random r = new Random();
@@ -92,5 +102,11 @@ namespace ProxyPatternExample
             return euroValue;
         }
 
-     }
+        private void setHistoryList()
+        {
+            accHistory.Add(new Transaction("18.06.2018", -20.05,"Ebay"));
+            accHistory.Add(new Transaction("30.06.2018", +2000,"Salary 06-2018"));
+        }
+
+    }
 }

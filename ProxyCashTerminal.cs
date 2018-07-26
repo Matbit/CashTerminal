@@ -33,7 +33,11 @@ namespace ProxyPatternExample
             return bankBerlin.checkPinCode(code);
         }
 
-       
+        public List<Transaction> getAccHistory()
+        {
+            throw new NotImplementedException();
+        }
+
         public string getAccountBalance()
         {
             initProxy();
@@ -46,11 +50,7 @@ namespace ProxyPatternExample
             return bankBerlin.getMoney(money);
         }
 
-        public List<string> getAccOrders()
-        {
-            throw new NotImplementedException();
-        }
-
+       
         private void initProxy()
         {
             if(bankBerlin == null)

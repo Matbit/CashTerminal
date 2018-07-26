@@ -9,7 +9,6 @@ namespace ProxyPatternExample
               
         CashTerminalOS ctOS;
 
-
         public Main()
         {
             InitializeComponent();
@@ -21,7 +20,6 @@ namespace ProxyPatternExample
 
             //program start
             ctOS.useProgram(0);
-
         }
 
         //View settings
@@ -52,8 +50,7 @@ namespace ProxyPatternExample
         //USE Card button 
         private void btnPutCardIn_Click(object sender, EventArgs e)
         {
-            ctOS.useProgram(1);
-            
+            ctOS.useProgram(1);            
         }
 
         //set panel colour green
@@ -103,16 +100,23 @@ namespace ProxyPatternExample
         {
             MessageBox.Show("PIN: 3749","Note",MessageBoxButtons.OK);
         }
-
-
+        
         
         private void btnAbort_Click(object sender, EventArgs e)
         {
            abortProgram();
         }
-        
 
-        
+        public void abortProgram()
+        {
+
+            if (ctOS.ProcessID == 2 || ctOS.ProcessID == 3)
+            {
+                ctOS.useProgram(6);
+            }
+            else ctOS.useProgram(5);
+        }
+
         private void userInput(string s)
         {   
             if(tbxUserInput.TextLength >= 4)
@@ -123,23 +127,11 @@ namespace ProxyPatternExample
             
         }
 
-
-        public void abortProgram()
-        {   
-
-            if(ctOS.ProcessID == 2)
-            {
-                ctOS.useProgram(6);
-            }
-            else ctOS.useProgram(5);
-        }
-
+        
         public void useUserInputFielAsPassword(bool isPassword)
         {
 
-            tbxUserInput.UseSystemPasswordChar = isPassword;
-
-            
+            tbxUserInput.UseSystemPasswordChar = isPassword;            
         }
 
         private void btnNB7_Click(object sender, EventArgs e)
@@ -167,9 +159,7 @@ namespace ProxyPatternExample
             else
             {
                 userInput("4");
-            }
-
-            
+            }            
         }
 
         private void btnNB5_Click(object sender, EventArgs e)
@@ -196,8 +186,14 @@ namespace ProxyPatternExample
         }
 
         private void btnNB2_Click(object sender, EventArgs e)
-        {
-            userInput("2");
+        {   
+            if(ctOS.ProcessID == 6)
+            {
+                useUserInputFielAsPassword(true);
+                userInput("2");
+                ctOS.useProgram(3);
+            }
+            else userInput("2");
         }
 
         private void btnNB3_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@ namespace ProxyPatternExample
             {
                 //get acc balance
                 ProcessID = 3;
+                getUserAccBalance();
             }
             else if(processID == 4)
             {
@@ -159,6 +160,9 @@ namespace ProxyPatternExample
             if (isOrderOk)
             {
                 proxy.getMoney(cash);
+                mainGui.setView("Transaction was successful..", false);
+                System.Threading.Thread.Sleep(500);
+                useProgram(6);
             }
             else
             {
@@ -167,6 +171,14 @@ namespace ProxyPatternExample
                 System.Threading.Thread.Sleep(2000);
                 useProgram(6);
             }
+        }
+
+        //get acc balance
+        private void getUserAccBalance()
+        {
+            mainGui.isAvailableConfirm(false);
+            setBankTitle();
+            mainGui.setView(proxy.getAccountBalance(), false);
         }
 
        
