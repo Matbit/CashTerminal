@@ -27,14 +27,19 @@ namespace ProxyPatternExample
         {
             if (clearView)
             {
-                tbxProgram.Clear();
-                tbxProgram.AppendText(s + Environment.NewLine);
+                clearTbx();
+                tbxProgram.Text = s + Environment.NewLine;
             }
             else if (!clearView)
             {
                 tbxProgram.AppendText(s + Environment.NewLine);
             }
             
+        }
+
+        private void clearTbx()
+        {
+            tbxProgram.Clear();
         }
         //View userInput
         public void setViewUserInput(String s)

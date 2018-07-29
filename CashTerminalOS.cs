@@ -226,8 +226,7 @@ namespace ProxyPatternExample
         //exit
         private void processExit()
         {
-            mainGui.clearView();
-            setBankTitle();
+            mainGui.setView("", true);
             mainGui.setViewUserInput("");
             mainGui.setView("please wait a moment. you get your card back soon..", false);
             System.Threading.Thread.Sleep(3250);
@@ -236,7 +235,7 @@ namespace ProxyPatternExample
             System.Threading.Thread.Sleep(100);
             setBankTitle();
             mainGui.setView("Thank you and we wish you a very nice day..".ToUpper(), false);
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(4000);
             mainGui.isAvailableNB(false);
             mainGui.isAvailableUseCardBtn(true);
             useProgram(0);
@@ -318,9 +317,7 @@ namespace ProxyPatternExample
 
         private static string formatInEuro(double d)
         {
-            string euroValue = d.ToString();
-            euroValue = string.Format("{0:0.00} €", d);
-            return euroValue;
+            return string.Format("{0:0.00} €", d);            
         }
 
 
