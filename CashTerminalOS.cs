@@ -26,7 +26,8 @@ namespace ProxyPatternExample
             //ProcessID = 0;
             if(processID == 0)
             {
-                //start
+                //
+                ProcessID = 0;
                 mainGui.isAvailableNB(false);
                 mainGui.isAvailableAbort(false);
                 mainGui.isAvailableConfirm(false);
@@ -238,6 +239,7 @@ namespace ProxyPatternExample
             System.Threading.Thread.Sleep(4000);
             mainGui.isAvailableNB(false);
             mainGui.isAvailableUseCardBtn(true);
+            ProcessID = 0;
             useProgram(0);
             
 
